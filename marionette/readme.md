@@ -1,4 +1,4 @@
-# Backbone.Marionette TodoMVC Example
+# Backbone.Marionette InversifyJS Example
 
 > Backbone.Marionette is a composite application library for Backbone.js that aims to simplify the construction of large scale JavaScript applications.
 
@@ -28,9 +28,9 @@ Get help from other Backbone.Marionette users:
 * [Backbone.Marionette on StackOverflow](http://stackoverflow.com/questions/tagged/backbone.marionette)
 * [Backbone.Marionette on Twitter](http://twitter.com/marionettejs)
 
-_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/todomvc/issues)._
+_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/inversify/inversify-code-samples/issues)._
 
 
 ## Implementation
 
-This implementation of the application uses Marionette's module system. Variations using RequireJS and a more classic approach to JavaScript modules [are also available here](https://github.com/marionettejs/backbone.marionette/wiki/Projects-and-websites-using-marionette).
+This implementation of the application uses RequireJS. Variations and a more classic approach to JavaScript modules [are also available here](https://github.com/marionettejs/backbone.marionette/wiki/Projects-and-websites-using-marionette).
