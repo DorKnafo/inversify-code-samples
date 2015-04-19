@@ -1,23 +1,26 @@
 /// <reference path="../interfaces.d.ts"/>
 
-import app = require("../app");
-
 class TodoListController extends Marionette.Controller implements TodoListControllerInterface {
-  public todoList : TodoListCollection;
 
-  constructor(TodoListCollection) {
-    this.todoList = TodoListCollection;
-    super();
+  public todoList : TodoCollectionInterface;
+  private _utils : UtilsInterface;
+
+  constructor(
+      TodoCollectionInterface : TodoCollectionInterface, //injected
+      UtilsInterface : UtilsInterface                    //injected
+    ) {
+
+      this.todoList = TodoCollectionInterface;
+      super();
   }
-  start () {
-    //this.showHeader(this.todoList);
-    //this.showFooter(this.todoList);
-    //this.showTodoList(this.todoList);
+
+  public start () : void {
     this.todoList.fetch();
   }
-  filterItems(filter) {
+
+  public filterItems(filter : string) : void {
     var newFilter = filter && filter.trim() || 'all';
-    app.request('filterState').set('filter', newFilter);
+    this._utils.getAppFilterState().set('filter', newFilter);
   }
 }
 

@@ -1,10 +1,12 @@
 ///<reference path="../../typings/tsd.d.ts" />
 /// <reference path="../interfaces.d.ts"/>
 
-class HeaderLayout extends Marionette.ItemView<any> implements HeaderLayoutInterface{
-  constructor() {
-    // UI bindings create cached attributes that
-    // point to jQuery selected objects
+class HeaderLayout extends Marionette.ItemView<any> implements HeaderLayoutInterface {
+
+  public collection : TodoCollectionInterface;
+
+  constructor(TodoCollectionInterface : TodoCollectionInterface /*injected*/) {
+    this.collection = TodoCollectionInterface;
     this.ui = {
       input: '#new-todo'
     };
@@ -14,7 +16,8 @@ class HeaderLayout extends Marionette.ItemView<any> implements HeaderLayoutInter
     };
     super();
   }
-  private template(serialized_model) {
+
+  private template(serialized_model) : string {
     var template = '', url = './templates/header_template.hbs';
     Backbone.$.ajax({
         async   : false,
@@ -25,16 +28,16 @@ class HeaderLayout extends Marionette.ItemView<any> implements HeaderLayoutInter
     });
     return _.template(template)();
   }
-  // According to the spec, If escape is pressed during the edit,
-  // the edit state should be left and any changes be discarded.
-  public onInputKeyup(e) {
+
+  public onInputKeyup(e) : void {
     var ESC_KEY = 27;
 
     if (e.which === ESC_KEY) {
       this.render();
     }
   }
-  public onInputKeypress(e) {
+
+  public onInputKeypress(e) : void {
     var ENTER_KEY = 13,
     todoText = this.ui.input.val().trim();
 

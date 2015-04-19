@@ -1,42 +1,57 @@
 /// <reference path="../interfaces.d.ts"/>
 
+import TodoItemView = require("./todo_item_view");
+
 class TodoListView extends Marionette.CompositeView<TodoModelInterface>
                     implements TodoListViewInterface {
 
-  constructor() {
+  private _utils : UtilsInterface;
+
+  constructor(UtilsInterface : UtilsInterface /*injected*/) {
+    this._utils = UtilsInterface;
+    this.childView = TodoItemView;
+    this.childViewContainer = '#todo-list';
+    this.ui = {
+      toggle: '#toggle-all'
+    }
+    this.events = <any> {
+      'click @ui.toggle': 'onToggleAllClick'
+    }
+    this.collectionEvents = {
+      'all': 'update'
+    }
     super();
-
   }
-  template: '#template-todoListCompositeView',
-  childView: Views.ItemView,
-  childViewContainer: '#todo-list',
 
-  ui: {
-    toggle: '#toggle-all'
-  },
-
-  events: {
-    'click @ui.toggle': 'onToggleAllClick'
-  },
-
-  collectionEvents: {
-    'all': 'update'
-  },
-
-  initialize() {
-    this.listenTo(App.request('filterState'), 'change:filter', this.render, this);
+  private template(serialized_model) : string {
+    var template = '', url = './templates/todo_list_template.hbs';
+    Backbone.$.ajax({
+        async   : false,
+        url     : url,
+        success : function (templateHtml : string) {
+            template = templateHtml;
+        }
+    });
+    return _.template(template)();
   }
-  addChild(child) {
-    var filteredOn = App.request('filterState').get('filter');
+
+  public initialize() {
+    this.listenTo(this._utils.getAppFilterState(), 'change:filter', this.render);
+  }
+
+  public addChild(child) {
+    var filteredOn = this._utils.getAppFilterState().get('filter');
 
     if (child.matchesFilter(filteredOn)) {
-      Backbone.Marionette.CompositeView.prototype.addChild.apply(this, arguments);
+      Marionette.CompositeView.prototype.addChild.apply(this, arguments);
     }
   }
-  onRender() {
+
+  public onRender() {
     this.update();
   }
-  update() {
+
+  public update() {
     function reduceCompleted(left, right) {
       return left && right.get('completed');
     }
@@ -44,7 +59,8 @@ class TodoListView extends Marionette.CompositeView<TodoModelInterface>
     this.ui.toggle.prop('checked', allCompleted);
     this.$el.parent().toggle(!!this.collection.length);
   }
-  onToggleAllClick(e) {
+
+  public onToggleAllClick(e) {
     var isChecked = e.currentTarget.checked;
     this.collection.each(function (todo) {
       todo.save({ 'completed': isChecked });

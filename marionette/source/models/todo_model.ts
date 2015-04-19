@@ -4,7 +4,7 @@ class TodoModel extends Backbone.Model implements TodoModelInterface {
   public created : number;
   public completed : boolean;
   public title : string;
-  constructor() {
+  constructor(/* No dendencies */) {
     this.defaults = function() {
       return {
         title: '',
@@ -14,7 +14,7 @@ class TodoModel extends Backbone.Model implements TodoModelInterface {
     };
     super();
   }
-  private initialize() {
+  public initialize() {
     if (this.isNew()) {
       this.set('created', Date.now());
     }

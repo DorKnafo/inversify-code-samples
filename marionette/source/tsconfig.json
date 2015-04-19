@@ -13,18 +13,20 @@
         "!./node_modules/**/*.ts"
     ],
     "files": [
-        "./app.ts",
         "./collections/todo_collection.ts",
         "./controllers/todolist_controller.ts",
+        "./core/app.ts",
+        "./core/router.ts",
+        "./helpers/utils.ts",
         "./interfaces.d.ts",
         "./inversify.config.ts",
         "./layout/footer_layout.ts",
         "./layout/header_layout.ts",
         "./layout/root_layout.ts",
         "./main.ts",
+        "./models/filter_state_model.ts",
         "./models/todo_model.ts",
         "./require.config.ts",
-        "./router.ts",
         "./views/todo_item_view.ts",
         "./views/todo_list_view.ts"
     ]
