@@ -1,4 +1,4 @@
-# Backbone.Marionette InversifyJS Example
+#  Marionette + TypeScript + InversifyJS + RequireJS Example
 
 #### About Marionette
 
