@@ -27,9 +27,9 @@ Invoking  resolve in any other place is an anti-pattern (read the [InversifyJS g
 In order to resolve a dependency we must first declare a type binding. A type binding (or just a binding) is a mapping between a service type (an interface), and
 an implementation type (a class) to be used to satisfy such a service requirement.
 
-- The application service types (interfaces) are declared at `source/interfaces.d.ts`.
-- The implementation types (classes) are declared in files and folders under the `source` directory.
-- The bindings are declared under the `source/inversify.config.ts`.
+- The **service types (interfaces)** are declared at `source/interfaces.d.ts`.
+- The **implementation types (classes)** are declared in files and folders under the `source` directory.
+- The **bindings** are declared under the `source/inversify.config.ts`.
 
 This file imports each of the implementation types (classes) in the application. So, if we know that a class has a dependency on a service type (interface) and we want to find where is located its implementation type (class) `source/inversify.config.ts` is a good place to start searching for it.
 
