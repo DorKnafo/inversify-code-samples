@@ -1,8 +1,12 @@
 # Backbone.Marionette InversifyJS Example
 
+#### About Marionette
+
 > Backbone.Marionette is a composite application library for Backbone.js that aims to simplify the construction of large scale JavaScript applications.
 
 > _[Backbone.Marionette - marionettejs.com](http://marionettejs.com)_
+
+#### About InversifyJS
 
 > InversifyJS is a lightweight (4KB) pico inversion of control (IoC) container for TypeScript and JavaScript apps. A pico IoC container uses a class constructor to identify and inject its dependencies.
 
