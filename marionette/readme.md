@@ -20,7 +20,7 @@ This example is based on the [TodoMVC marionette example](https://github.com/tas
 This implementation uses [requirejs](http://requirejs.org/) as module loader. Each of the application's components is declared on and independent file under
 the `source` directory.
 
-The file `source/main.ts` is the application's `composition root`. The composition root is the single place in the application where the composition of the object
+The file `source/main.ts` is the application's `composition root`. The **composition root** is the single place in the application where the composition of the object
 graphs for the application take place, using the dependency injection container. It is the only place where we will invoke the IoC container's `resolve` method.
 Invoking  resolve in any other place is an anti-pattern (read the [InversifyJS good practices](http://inversify.io/#good_practices) for more details).
 
@@ -31,7 +31,7 @@ an implementation type (a class) to be used to satisfy such a service requiremen
 - The **implementation types (classes)** are declared in files and folders under the `source` directory.
 - The **bindings** are declared under the `source/inversify.config.ts`.
 
-This file imports each of the implementation types (classes) in the application. So, if we know that a class has a dependency on a service type (interface) and we want to find where is located its implementation type (class) `source/inversify.config.ts` is a good place to start searching for it.
+The `source/inversify.config.ts` file imports each of the implementation types (classes) in the application. So, if we know that a class has a dependency on a service type (interface) and we want to find where is located its implementation type (class) `source/inversify.config.ts` is a good place to start searching for it.
 
 One we have declared all the bindings we invoke the resolve method (in `source/main.ts`):
 
