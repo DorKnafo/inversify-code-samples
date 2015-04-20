@@ -4,6 +4,12 @@
 
 > _[Backbone.Marionette - marionettejs.com](http://marionettejs.com)_
 
+> InversifyJS is a lightweight (4KB) pico inversion of control (IoC) container for TypeScript and JavaScript apps. A pico IoC container uses a class constructor to identify and inject its dependencies.
+
+> InversifyJS is easy to integrate with the majority of existing JavaScript frameworks and encourage the usage of the best OOP and IoC practices.
+
+> _[InversifyJS - inversify.io](http://inversify.io)_
+
 This example is based on the [TodoMVC marionette example](https://github.com/tastejs/todomvc/tree/gh-pages/examples/backbone_marionette)
 
 ## Learning Backbone.Marionette
@@ -29,8 +35,3 @@ Get help from other Backbone.Marionette users:
 * [Backbone.Marionette on Twitter](http://twitter.com/marionettejs)
 
 _If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/inversify/inversify-code-samples/issues)._
-
-
-## Implementation
-
-This implementation of the application uses RequireJS. Variations and a more classic approach to JavaScript modules [are also available here](https://github.com/marionettejs/backbone.marionette/wiki/Projects-and-websites-using-marionette).
