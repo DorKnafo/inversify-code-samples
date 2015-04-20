@@ -1,4 +1,5 @@
 /// <reference path="./interfaces.d.ts"/>
+/// <amd-dependency path="inversify" name="inversify"/>
 
 import RootLayout         = require("./layout/root_layout");
 import HeaderLayout       = require("./layout/header_layout");

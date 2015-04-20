@@ -1,4 +1,6 @@
 /// <reference path="../interfaces.d.ts"/>
+/// <amd-dependency path="marionette"/>
+/// <amd-dependency path="localstorage"/>
 
 import TodoItemView = require("./todo_item_view");
 
@@ -6,24 +8,29 @@ class TodoListView extends Marionette.CompositeView<TodoModelInterface>
                     implements TodoListViewInterface {
 
   private _utils : UtilsInterface;
+  public collection : TodoCollectionInterface;
 
-  constructor(UtilsInterface : UtilsInterface /*injected*/) {
-    this._utils = UtilsInterface;
-    this.childView = TodoItemView;
-    this.childViewContainer = '#todo-list';
-    this.ui = {
-      toggle: '#toggle-all'
-    }
-    this.events = <any> {
-      'click @ui.toggle': 'onToggleAllClick'
-    }
-    this.collectionEvents = {
-      'all': 'update'
-    }
-    super();
+  constructor(
+      TodoCollectionInterface : TodoCollectionInterface, // injected
+      UtilsInterface : UtilsInterface                    //injected
+    ) {
+
+      this._utils = UtilsInterface;
+      this.collection = TodoCollectionInterface;
+      this.childViewContainer = '#todo-list';
+      this.ui = {
+        toggle: '#toggle-all'
+      }
+      this.events = <any> {
+        'click @ui.toggle': 'onToggleAllClick'
+      }
+      this.collectionEvents = {
+        'all': 'update'
+      }
+      super();
   }
 
-  private template(serialized_model) : string {
+  private template(serialized_model) {
     var template = '', url = './source/templates/todo_list.template';
     Backbone.$.ajax({
         async   : false,
@@ -32,10 +39,11 @@ class TodoListView extends Marionette.CompositeView<TodoModelInterface>
             template = templateHtml;
         }
     });
-    return _.template(template)();
+    return _.template(template)(serialized_model);
   }
 
   public initialize() {
+    // debugger
     this.listenTo(this._utils.getAppFilterState(), 'change:filter', this.render);
   }
 

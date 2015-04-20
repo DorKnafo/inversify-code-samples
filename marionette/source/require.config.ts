@@ -14,7 +14,6 @@ require.config({
     backbone: "./node_modules/backbone/backbone",
     localstorage: "./node_modules/backbone.localstorage/backbone.localStorage",
     marionette : "./node_modules/backbone.marionette/lib/backbone.marionette",
-    // issue can't import via requirejs ????
     inversify : "./node_modules/inversify/dist/inversify"
   },
   // set cache off (disable in production)

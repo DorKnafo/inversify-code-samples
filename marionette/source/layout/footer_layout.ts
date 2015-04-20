@@ -12,31 +12,33 @@ class FooterLayout extends Marionette.ItemView<any> implements FooterLayoutInter
       TodoCollectionInterface : TodoCollectionInterface, // injected
       UtilsInterface : UtilsInterface                    //injected
     ) {
-      this._utils = UtilsInterface;
-      this.collection = TodoCollectionInterface;
-      this.ui = {
-        filters: '#filters a',
-        completed: '.completed a',
-        active: '.active a',
-        all: '.all a',
-        summary: '#todo-count',
-        clear: '#clear-completed'
-      };
-      this.events = <any> {
-        'click @ui.clear': 'onClearClick'
-      };
-      this.collectionEvents = {
-        'all': 'render'
-      };
-      this.templateHelpers = {
-        activeCountLabel: function () {
-          return (this.activeCount === 1 ? 'item' : 'items') + ' left';
-        }
-      };
-      super();
+
+        this._utils = UtilsInterface;
+        this.collection = TodoCollectionInterface;
+        this.ui = {
+          filters: '#filters a',
+          completed: '.completed a',
+          active: '.active a',
+          all: '.all a',
+          summary: '#todo-count',
+          clear: '#clear-completed'
+        };
+        this.events = <any> {
+          'click @ui.clear': 'onClearClick'
+        };
+        this.collectionEvents = {
+          'all': 'render'
+        };
+        this.templateHelpers = {
+          activeCountLabel: function () {
+            return (this.activeCount === 1 ? 'item' : 'items') + ' left';
+          }
+        };
+        super();
   }
 
   private template(serialized_model) {
+    var that = this;
     var template = '', url = './source/templates/footer.template';
     Backbone.$.ajax({
         async   : false,
@@ -45,7 +47,7 @@ class FooterLayout extends Marionette.ItemView<any> implements FooterLayoutInter
             template = templateHtml;
         }
     });
-    return _.template(template)();
+    return _.template(template)(serialized_model);
   }
 
   public initialize() {

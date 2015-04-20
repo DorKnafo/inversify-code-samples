@@ -7,7 +7,11 @@ class FilterStateModel extends Backbone.Model {
   public filter : string;
 
   constructor(/* No dendencies */) {
-    this.filter = "all";
+    this.defaults = function() {
+      return {
+        filter: 'all'
+      }
+    };
     super();
   }
 }

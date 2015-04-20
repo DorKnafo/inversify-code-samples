@@ -27,7 +27,7 @@ class TodoItemView extends Marionette.ItemView<TodoModelInterface>
     super();
   }
 
-  private template(serialized_model) : string {
+  private template(serialized_model) {
     var template = '', url = './source/templates/todo_item.template';
     Backbone.$.ajax({
         async   : false,
@@ -36,7 +36,7 @@ class TodoItemView extends Marionette.ItemView<TodoModelInterface>
             template = templateHtml;
         }
     });
-    return _.template(template)();
+    return _.template(template)(serialized_model);
   }
 
   public onRender() {

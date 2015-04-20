@@ -18,7 +18,7 @@ class HeaderLayout extends Marionette.ItemView<any> implements HeaderLayoutInter
     super();
   }
 
-  private template(serialized_model) : string {
+  private template(serialized_model) {
     var template = '', url = './source/templates/header.template';
     Backbone.$.ajax({
         async   : false,
@@ -27,7 +27,7 @@ class HeaderLayout extends Marionette.ItemView<any> implements HeaderLayoutInter
             template = templateHtml;
         }
     });
-    return _.template(template)();
+    return _.template(template)(serialized_model);
   }
 
   public onInputKeyup(e) : void {

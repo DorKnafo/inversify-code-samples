@@ -11,7 +11,7 @@ class TodoListController extends Marionette.Controller implements TodoListContro
       TodoCollectionInterface : TodoCollectionInterface, //injected
       UtilsInterface : UtilsInterface                    //injected
     ) {
-
+      this._utils = UtilsInterface;
       this.todoList = TodoCollectionInterface;
       super();
   }
