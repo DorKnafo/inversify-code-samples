@@ -1,10 +1,12 @@
 /// <reference path="../interfaces.d.ts"/>
+/// <amd-dependency path="marionette"/>
+/// <amd-dependency path="localstorage"/>
 
 class RootLayout extends Marionette.LayoutView<any> implements RootLayoutInterface {
-  
-  public header : Marionette.Region;
-  public main : Marionette.Region;
-  public footer : Marionette.Region;
+
+  public header : HeaderLayoutInterface;
+  public main : FooterLayoutInterface;
+  public footer : TodoListViewInterface;
 
   constructor(
       HeaderLayoutInterface : HeaderLayoutInterface, // injected
@@ -19,9 +21,11 @@ class RootLayout extends Marionette.LayoutView<any> implements RootLayoutInterfa
       this.addRegions({ main : "#main" });
       this.addRegions({ footer : "#footer" });
 
-      this.showChildView('header', HeaderLayoutInterface);
-      this.showChildView('footer', FooterLayoutInterface);
-      this.showChildView('main', TodoListViewInterface);
+      // Type definion file seems to be mising showChildView
+      // using (<any>this) until is updaed
+      (<any>this).showChildView('header', HeaderLayoutInterface);
+      (<any>this).showChildView('footer', FooterLayoutInterface);
+      (<any>this).showChildView('main', TodoListViewInterface);
   }
 }
 

@@ -1,4 +1,6 @@
 /// <reference path="../interfaces.d.ts"/>
+/// <amd-dependency path="marionette"/>
+/// <amd-dependency path="localstorage"/>
 
 class TodoListController extends Marionette.Controller implements TodoListControllerInterface {
 

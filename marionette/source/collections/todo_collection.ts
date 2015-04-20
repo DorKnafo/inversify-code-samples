@@ -7,11 +7,13 @@ class TodoCollection extends Backbone.Collection<TodoModelInterface>
 
   public model : { new() : TodoModelInterface};
   public localStorage : any;
+
   constructor(/* No dendencies */) {
     this.model = TodoModel;
     this.localStorage = new (<any>Backbone).LocalStorage('todos-backbone-marionette');
     super();
   }
+
   comparator(compare : TodoModelInterface, to? : TodoModelInterface) : number {
     if(typeof to === "undefined") {
       return compare.created;
@@ -25,12 +27,15 @@ class TodoCollection extends Backbone.Collection<TodoModelInterface>
       };
     }
   }
+
   public getCompleted() : TodoModelInterface[] {
     return this.filter(this._isCompleted);
   }
+
   public getActive() : TodoModelInterface[] {
     return this.reject(this._isCompleted);
   }
+  
   private _isCompleted(todo : TodoModelInterface) : boolean{
     return todo.isCompleted();
   }

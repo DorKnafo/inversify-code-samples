@@ -1,11 +1,30 @@
 ///<reference path="../typings/tsd.d.ts" />
 
+//******************************************************************************
+//* NOT INJECTED
+//******************************************************************************
 // application
 interface ApplicationInterface extends Marionette.Application {
   root : RootLayoutInterface;
   todoListRouter : TodoListRouterInterface;
 }
 
+// models
+interface TodoModelInterface extends Backbone.Model {
+  created : number;
+  completed : boolean;
+  title : string;
+  toggle() : TodoModelInterface;
+  isCompleted() : boolean;
+  matchesFilter(filter) : boolean;
+}
+
+// views
+interface TodoItemViewInterface extends Marionette.ItemView<TodoModelInterface> {}
+
+//******************************************************************************
+//* INJECTED
+//******************************************************************************
 // layout
 interface RootLayoutInterface extends Marionette.LayoutView<any> {}
 interface HeaderLayoutInterface extends Marionette.ItemView<any> {}
@@ -27,21 +46,8 @@ interface TodoCollectionInterface extends Backbone.Collection<TodoModelInterface
   getActive() : TodoModelInterface[];
 }
 
-// models
-interface TodoModelInterface extends Backbone.Model {
-  created : number;
-  completed : boolean;
-  title : string;
-  toggle() : TodoModelInterface;
-  isCompleted() : boolean;
-  matchesFilter(filter) : boolean;
-}
-
 // collection views
 interface TodoListViewInterface extends Marionette.CompositeView<TodoModelInterface> {}
-
-// views
-interface TodoItemViewInterface extends Marionette.ItemView<TodoModelInterface> {}
 
 // others
 interface UtilsInterface {

@@ -24,7 +24,7 @@ class TodoListView extends Marionette.CompositeView<TodoModelInterface>
   }
 
   private template(serialized_model) : string {
-    var template = '', url = './templates/todo_list_template.hbs';
+    var template = '', url = './source/templates/todo_list.template';
     Backbone.$.ajax({
         async   : false,
         url     : url,

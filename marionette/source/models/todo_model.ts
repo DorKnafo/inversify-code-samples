@@ -1,4 +1,6 @@
 ///<reference path="../../typings/tsd.d.ts" />
+/// <amd-dependency path="marionette"/>
+/// <amd-dependency path="localstorage"/>
 
 class TodoModel extends Backbone.Model implements TodoModelInterface {
   public created : number;

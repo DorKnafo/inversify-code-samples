@@ -1,6 +1,6 @@
 ///<reference path="../../typings/tsd.d.ts" />
-
-
+/// <amd-dependency path="marionette"/>
+/// <amd-dependency path="localstorage"/>
 
 class TodoItemView extends Marionette.ItemView<TodoModelInterface>
                    implements TodoItemViewInterface {
@@ -24,14 +24,11 @@ class TodoItemView extends Marionette.ItemView<TodoModelInterface>
     this.modelEvents = {
       'change': 'render'
     };
-    /*
-    template: '#template-todoItemView',
-    */
     super();
   }
 
   private template(serialized_model) : string {
-    var template = '', url = './templates/todo_item_template.hbs';
+    var template = '', url = './source/templates/todo_item.template';
     Backbone.$.ajax({
         async   : false,
         url     : url,

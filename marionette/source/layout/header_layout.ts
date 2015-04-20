@@ -1,5 +1,6 @@
-///<reference path="../../typings/tsd.d.ts" />
 /// <reference path="../interfaces.d.ts"/>
+/// <amd-dependency path="marionette"/>
+/// <amd-dependency path="localstorage"/>
 
 class HeaderLayout extends Marionette.ItemView<any> implements HeaderLayoutInterface {
 
@@ -18,7 +19,7 @@ class HeaderLayout extends Marionette.ItemView<any> implements HeaderLayoutInter
   }
 
   private template(serialized_model) : string {
-    var template = '', url = './templates/header_template.hbs';
+    var template = '', url = './source/templates/header.template';
     Backbone.$.ajax({
         async   : false,
         url     : url,
