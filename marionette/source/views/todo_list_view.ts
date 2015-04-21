@@ -43,13 +43,15 @@ class TodoListView extends Marionette.CompositeView<TodoModelInterface>
   }
 
   public initialize() {
-    this.listenTo(this._utils.getAppFilterState(), 'change:filter', this.render);
+    // Type definion file seems to be mising listenTo
+    // using (<any>this) until is updated
+    (<any>this).listenTo(this._utils.getAppFilterState(), 'change:filter', this.render, this);
   }
 
   public buildChildView(child, ChildViewClass, childViewOptions) {
     var options = _.extend({model: child}, childViewOptions);
-    var view = new ChildViewClass();
-    view.model = child;
+    var view = new ChildViewClass(); // avoiding constructor injections
+    view.model = options.model;      // using setter insteat
     return view;
   }
 

@@ -51,7 +51,7 @@ class FooterLayout extends Marionette.ItemView<any> implements FooterLayoutInter
 
   public initialize() {
     // Type definion file seems to be mising listenTo
-    // using (<any>this) until is updaed
+    // using (<any>this) until is updated
     (<any>this).listenTo(this._utils.getAppFilterState(), 'change:filter', this.updateFilterSelection, this);
   }
 

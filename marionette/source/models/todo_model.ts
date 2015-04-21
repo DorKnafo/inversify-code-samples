@@ -23,7 +23,6 @@ class TodoModel extends Backbone.Model implements TodoModelInterface {
   }
 
   public toggle() : TodoModelInterface {
-    debugger;
     var model = <TodoModelInterface>this.set('completed', !this.isCompleted());
     return model;
   }
