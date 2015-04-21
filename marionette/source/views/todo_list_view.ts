@@ -17,6 +17,7 @@ class TodoListView extends Marionette.CompositeView<TodoModelInterface>
 
       this._utils = UtilsInterface;
       this.collection = TodoCollectionInterface;
+      this.childView = TodoItemView;
       this.childViewContainer = '#todo-list';
       this.ui = {
         toggle: '#toggle-all'
@@ -43,8 +44,19 @@ class TodoListView extends Marionette.CompositeView<TodoModelInterface>
   }
 
   public initialize() {
-    // debugger
     this.listenTo(this._utils.getAppFilterState(), 'change:filter', this.render);
+  }
+
+  public buildChildView(child, ChildViewClass, childViewOptions) {
+    var options = _.extend({model: child}, childViewOptions);
+    // Create the child view (TodoItemView) instance
+    // If the child view has dependencies we will have to resolve them
+    // avoid calling kernel.resolve<T> here. Get the contructor
+    // refrence from this.childView instead
+    var view = new ChildViewClass();
+    view.model = child;
+    // return it
+    return view;
   }
 
   public addChild(child) {

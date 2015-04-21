@@ -13,16 +13,10 @@ require([
     // take place, using the dependency injection container.
     var app = kernel.resolve<ApplicationInterface>("ApplicationInterface");
 
-    // create global variable
-    (<any>window).app = app;
-
-    app.reqres.setHandler('filterState', function () {
-      return new FilterStateModel();
-    });
-
     app.on('start', function () {
       Backbone.history.start();
       app.todoListRouter.controller.start();
     });
+
     app.start();
 });

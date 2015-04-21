@@ -1,12 +1,9 @@
 ///<reference path="../../typings/tsd.d.ts" />
 /// <amd-dependency path="marionette"/>
-/// <amd-dependency path="localstorage"/>
 
 class TodoItemView extends Marionette.ItemView<TodoModelInterface>
                    implements TodoItemViewInterface {
-
-  public model : TodoModelInterface;
-  constructor(/* No dendencies */) {
+  constructor() {
     this.tagName = 'li';
     this.ui = {
       edit: '.edit',
@@ -49,10 +46,12 @@ class TodoItemView extends Marionette.ItemView<TodoModelInterface>
   }
 
   public deleteModel() {
+    debugger;
     this.model.destroy();
   }
 
   public toggle() {
+    debugger;
     this.model.toggle().save();
   }
 
