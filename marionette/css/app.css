@@ -7,3 +7,15 @@
 #footer {
 	display: none;
 }
+
+body{
+	padding-bottom: 150px;
+}
+
+#toggle-all:before {
+	content: '❯';
+}
+
+#todo-list li .destroy:after {
+	content: '×';
+}

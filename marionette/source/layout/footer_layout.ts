@@ -1,6 +1,5 @@
 /// <reference path="../interfaces.d.ts"/>
 /// <amd-dependency path="marionette"/>
-/// <amd-dependency path="localstorage"/>
 
 class FooterLayout extends Marionette.ItemView<any> implements FooterLayoutInterface {
 

@@ -1,6 +1,5 @@
 ///<reference path="../../typings/tsd.d.ts" />
 /// <amd-dependency path="marionette"/>
-/// <amd-dependency path="localstorage"/>
 
 class TodoModel extends Backbone.Model implements TodoModelInterface {
 
@@ -8,20 +7,25 @@ class TodoModel extends Backbone.Model implements TodoModelInterface {
   public completed : boolean;
   public title : string;
 
-  constructor(/* No dendencies */) {
+  constructor(attrs) {
+    this.created = attrs['created'] || Date.now();
+    this.completed = attrs['completed'] || false;
+    this.title = attrs['title'] || '';
     super();
   }
 
   public initialize() {
-    if (this.isNew()) {
-      this.set('created', Date.now());
-      this.set('completed', false);
-      this.set('title', '');
+    if(this.isNew()){
+      this.set('created', this.created);
+      this.set('completed', this.completed);
+      this.set('title', this.title);
     }
   }
 
   public toggle() : TodoModelInterface {
-    return <TodoModelInterface>this.set('completed', !this.isCompleted());
+    debugger;
+    var model = <TodoModelInterface>this.set('completed', !this.isCompleted());
+    return model;
   }
 
   public isCompleted() : boolean {

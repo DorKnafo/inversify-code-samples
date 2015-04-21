@@ -22,6 +22,9 @@ interface TodoModelInterface extends Backbone.Model {
 // views
 interface TodoItemViewInterface extends Marionette.ItemView<TodoModelInterface> {}
 
+// others
+interface FilterStateModelInterface extends Backbone.Model {}
+
 //******************************************************************************
 //* INJECTED
 //******************************************************************************
@@ -51,5 +54,5 @@ interface TodoListViewInterface extends Marionette.CompositeView<TodoModelInterf
 
 // others
 interface UtilsInterface {
-  getAppFilterState() : any;
+  getAppFilterState() : FilterStateModelInterface;
 }

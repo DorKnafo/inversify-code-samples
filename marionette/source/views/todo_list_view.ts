@@ -1,6 +1,5 @@
 /// <reference path="../interfaces.d.ts"/>
 /// <amd-dependency path="marionette"/>
-/// <amd-dependency path="localstorage"/>
 
 import TodoItemView = require("./todo_item_view");
 
@@ -49,19 +48,13 @@ class TodoListView extends Marionette.CompositeView<TodoModelInterface>
 
   public buildChildView(child, ChildViewClass, childViewOptions) {
     var options = _.extend({model: child}, childViewOptions);
-    // Create the child view (TodoItemView) instance
-    // If the child view has dependencies we will have to resolve them
-    // avoid calling kernel.resolve<T> here. Get the contructor
-    // refrence from this.childView instead
     var view = new ChildViewClass();
     view.model = child;
-    // return it
     return view;
   }
 
   public addChild(child) {
     var filteredOn = this._utils.getAppFilterState().get('filter');
-
     if (child.matchesFilter(filteredOn)) {
       Marionette.CompositeView.prototype.addChild.apply(this, arguments);
     }

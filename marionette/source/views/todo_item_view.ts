@@ -46,13 +46,12 @@ class TodoItemView extends Marionette.ItemView<TodoModelInterface>
   }
 
   public deleteModel() {
-    debugger;
     this.model.destroy();
   }
 
   public toggle() {
-    debugger;
-    this.model.toggle().save();
+    var item = this.model.toggle();
+    item.save();
   }
 
   public onEditClick() {

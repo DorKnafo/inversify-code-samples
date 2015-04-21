@@ -1,18 +1,19 @@
 ///<reference path="../../typings/tsd.d.ts" />
 /// <amd-dependency path="marionette"/>
-/// <amd-dependency path="localstorage"/>
 
-class FilterStateModel extends Backbone.Model {
+class FilterStateModel extends Backbone.Model implements FilterStateModelInterface {
 
   public filter : string;
 
-  constructor(/* No dendencies */) {
-    this.defaults = function() {
-      return {
-        filter: 'all'
-      }
-    };
+  constructor(attrs?) {
+    this.filter = attrs['filter'] || 'all';
     super();
+  }
+
+  public initialize() {
+    if(this.isNew()){
+      this.set('filter', 'all');
+    }
   }
 }
 
