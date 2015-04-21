@@ -1,0 +1,21 @@
+#todoapp.filter-active #todo-list .completed,
+#todoapp.filter-completed #todo-list .active {
+	display: none;
+}
+
+#main,
+#footer {
+	display: none;
+}
+
+body{
+	padding-bottom: 150px;
+}
+
+#toggle-all:before {
+	content: '❯';
+}
+
+#todo-list li .destroy:after {
+	content: '×';
+}

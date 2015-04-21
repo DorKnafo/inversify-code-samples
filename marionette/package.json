@@ -1,0 +1,45 @@
+{
+  "name": "inversify-code-samples-marionette",
+  "version": "1.0.0",
+  "description": "Marionette + InversifyJS integration example app",
+  "main": "source main.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/inversify/inversify-code-samples.git"
+  },
+  "keywords": [
+    "marionette",
+    "inversion",
+    "control",
+    "dependency",
+    "ioc",
+    "container",
+    "inversify"
+  ],
+  "author": "Remo H. Jansen <remo.jansen@wolksoftware.com> (http://www.remojansen.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/inversify/inversify-code-samples/issues"
+  },
+  "homepage": "https://github.com/inversify/inversify-code-samples",
+  "dependencies": {
+    "backbone": "^1.1.2",
+    "backbone.localstorage": "^1.1.16",
+    "backbone.marionette": "^2.4.1",
+    "inversify": "^1.0.0",
+    "jquery": "^2.1.3",
+    "requirejs": "^2.1.17",
+    "todomvc-app-css": "^1.0.1",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.6.4",
+    "gulp": "^3.8.11",
+    "gulp-tslint": "^2.0.0",
+    "gulp-typescript": "^2.6.0",
+    "run-sequence": "^1.0.2"
+  }
+}
