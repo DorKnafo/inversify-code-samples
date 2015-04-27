@@ -34,12 +34,5 @@
     "requirejs": "^2.1.17",
     "todomvc-app-css": "^1.0.1",
     "underscore": "^1.8.3"
-  },
-  "devDependencies": {
-    "browser-sync": "^2.6.4",
-    "gulp": "^3.8.11",
-    "gulp-tslint": "^2.0.0",
-    "gulp-typescript": "^2.6.0",
-    "run-sequence": "^1.0.2"
   }
 }
