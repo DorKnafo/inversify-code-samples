@@ -39,7 +39,7 @@ has some dependencies that will be resolved and injected via its constructor. If
 
 The application dependency tree look as follows:
 
-![dependency_tree](https://raw.githubusercontent.com/remojansen/inversify-code-samples/master/marionette/img/dependency_tree.png)
+![dependency_tree](https://raw.githubusercontent.com/inversify/inversify-code-samples/master/marionette/img/dependency_tree.png)
 
 ## Learning Backbone.Marionette
 
