@@ -15,24 +15,17 @@ var kernel : inversify.KernelInterface = new inversify.Kernel();
 
 // bindings
 kernel.bind(new inversify.TypeBinding<ApplicationInterface>("ApplicationInterface", Application));
-
 kernel.bind(new inversify.TypeBinding<RootLayoutInterface>("RootLayoutInterface", RootLayout));
-
 kernel.bind(new inversify.TypeBinding<HeaderLayoutInterface>("HeaderLayoutInterface", HeaderLayout));
-
 kernel.bind(new inversify.TypeBinding<FooterLayoutInterface>("FooterLayoutInterface", FooterLayout));
+kernel.bind(new inversify.TypeBinding<TodoListControllerInterface>("TodoListControllerInterface", TodoListController));
+kernel.bind(new inversify.TypeBinding<TodoListViewInterface>("TodoListViewInterface", TodoListView));
+kernel.bind(new inversify.TypeBinding<TodoListRouterInterface>("TodoListRouterInterface", TodoListRouter));
+kernel.bind(new inversify.TypeBinding<UtilsInterface>("UtilsInterface", Utils));
 
 kernel.bind(new inversify.TypeBinding<TodoCollectionInterface>("TodoCollectionInterface",
   TodoCollection,
   inversify.TypeBindingScopeEnum.Singleton
 ));
-
-kernel.bind(new inversify.TypeBinding<TodoListControllerInterface>("TodoListControllerInterface", TodoListController));
-
-kernel.bind(new inversify.TypeBinding<TodoListViewInterface>("TodoListViewInterface", TodoListView));
-
-kernel.bind(new inversify.TypeBinding<TodoListRouterInterface>("TodoListRouterInterface", TodoListRouter));
-
-kernel.bind(new inversify.TypeBinding<UtilsInterface>("UtilsInterface", Utils));
 
 export = kernel;
